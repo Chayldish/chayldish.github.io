@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+.experience{
+    background-color: black;
+    padding: 5rem 9%;
+}
+.heading{
+    text-align: center;
+    font-size: 4.5rem;
+    margin-bottom: 5rem;
+}
+.experience-container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+.experience-box{
+    background-color: #1a1a1a;
+    border: 2px solid #b74b4b;
+    border-radius: 1rem;
+    padding: 3rem 2.5rem;
+    min-width: 30rem;
+    flex: 1;
+    max-width: 60rem;
+    transition: 0.3s ease;
+}
+.experience-box:hover{
+    box-shadow: 0 0 20px #b74b4b;
+    transform: translateY(-5px);
+}
+.experience-box h3{
+    font-size: 2.0rem;
+    color: white;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.experience-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+.experience-list p2{
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 1.6;
+}
+.experience-list h5{
+    font-size: 1.2rem;
+    text-align: center;
+    color: #b74b4b;
+    margin-bottom: 1rem;
+}
+.experience-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Mobile Styles for Experience */
+@media(max-width: 768px){
+    .experience{
+        padding: 4rem 5%;
+    }
+    
+    .heading{
+        font-size: 2.8rem;
+        margin-bottom: 3rem;
+    }
+    
+    .experience-container{
+        gap: 2rem;
+    }
+    
+    .experience-box{
+        padding: 2rem 1.5rem;
+        min-width: 100%;
+    }
+    
+    .experience-box h3{
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .experience-list p2{
+        font-size: 1.3rem;
+    }
+    
+    .experience-list h5{
+        font-size: 1rem;
+    }
+}
+
+/* Extra Small Devices */
+@media(max-width: 480px){
+    .heading{
+        font-size: 2.4rem;
+    }
+    
+    .experience-box h3{
+        font-size: 1.4rem;
+    }
+    
+    .experience-list p2{
+        font-size: 1.1rem;
+    }
+    
+    .experience-list h5{
+        font-size: 0.9rem;
+    }
+}

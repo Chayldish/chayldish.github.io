@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+/*services*/
+.services{
+    background-color: black;
+    padding: 5rem 9%;
+}
+.heading{
+    text-align: center;
+    font-size: 4.0rem;
+    margin-bottom: 5rem;
+}
+.services-container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+.services-box{
+    background-color: #1a1a1a;
+    border: 2px solid #b74b4b;
+    border-radius: 1rem;
+    padding: 3rem 2.5rem;
+    min-width: 28rem;
+    flex: 1;
+    max-width: 40rem;
+    transition: 0.3s ease;
+    min-height: auto;
+}
+.services-box:hover{
+    box-shadow: 0 0 20px #b74b4b;
+    transform: translateY(-5px);
+}
+.services-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+.services-list span{
+    background-color: transparent;
+    border: 1.5px solid #b74b4b;
+    color: white;
+    padding: 0.6rem 1.4rem;
+    border-radius: 2rem;
+    font-size: 1.4rem;
+    transition: 0.3s ease;
+}
+
+/* Mobile Styles for Services */
+@media(max-width: 768px){
+    .services{
+        padding: 4rem 5%;
+    }
+    
+    .heading{
+        font-size: 2.8rem;
+        margin-bottom: 3rem;
+    }
+    
+    .services-container{
+        gap: 2rem;
+    }
+    
+    .services-box{
+        padding: 2rem 1.5rem;
+        min-width: 100%;
+    }
+    
+    .services-list span{
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* Extra Small Devices */
+@media(max-width: 480px){
+    .heading{
+        font-size: 2.4rem;
+    }
+    
+    .services-box{
+        padding: 1.5rem 1rem;
+    }
+    
+    .services-list span{
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
