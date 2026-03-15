@@ -60,6 +60,25 @@
     justify-content: center;
 }
 
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    .experience {
+        padding: 4rem 7%;
+    }
+    
+    .heading {
+        font-size: 3.5rem;
+    }
+    
+    .experience-container {
+        gap: 2rem;
+    }
+    
+    .experience-box h3 {
+        font-size: 1.8rem;
+    }
+}
+
 /* Mobile Styles for Experience */
 @media(max-width: 768px){
     .experience{

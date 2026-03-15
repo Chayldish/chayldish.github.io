@@ -25,11 +25,11 @@
     border: 3px solid #b74b4b;
     border-radius: 1rem;
     padding: 3rem 2.5rem;
-    min-width: 30rem;
+    min-width: 28rem;
     flex: 1;
-    max-width: 32rem;
+    max-width: 35rem;
     transition: 0.3s ease;
-    min-height: 25rem;
+    min-height: 22rem;
 }
 
 .skills-box:hover{
@@ -59,11 +59,32 @@
     border-radius: 2rem;
     font-size: 1.4rem;
     transition: 0.3s ease;
+    cursor: pointer;
 }
 
 .skills-list span:hover{
     background-color: #b74b4b;
     color: black;
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    .skills {
+        padding: 4rem 7%;
+    }
+    
+    .heading {
+        font-size: 3.5rem;
+    }
+    
+    .skills-container {
+        gap: 2rem;
+    }
+    
+    .skills-box {
+        min-width: 25rem;
+        max-width: 30rem;
+    }
 }
 
 /* Mobile Styles for Skills */
@@ -85,6 +106,7 @@
         padding: 2rem 1.5rem;
         min-width: 100%;
         max-width: 100%;
+        min-height: auto;
     }
     
     .skills-box h3{

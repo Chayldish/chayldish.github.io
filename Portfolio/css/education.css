@@ -74,6 +74,21 @@
     color: #b74b4b;
 }
 
+/* Tablet Styles */
+@media (max-width: 1024px) {
+    .education {
+        padding: 4rem 7%;
+    }
+    
+    .heading {
+        font-size: 3.5rem;
+    }
+    
+    .education-container {
+        gap: 2rem;
+    }
+}
+
 /* Mobile Styles for Education */
 @media(max-width: 768px){
     .education{

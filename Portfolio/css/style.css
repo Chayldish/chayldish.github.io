@@ -12,6 +12,19 @@
 
 html{
     font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+/* Improve touch scrolling on mobile */
+@media (pointer: coarse) {
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    a, button, .btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
 }
 
 body{
@@ -148,6 +161,20 @@ nav a.active{
 section{
     min-height: 100vh;
     padding: 5rem 9% 5rem;
+}
+
+/* Improve section spacing on tablets */
+@media (max-width: 1200px) {
+    section {
+        padding: 4rem 7%;
+    }
+}
+
+/* Better section padding for mobile */
+@media (max-width: 768px) {
+    section {
+        padding: 4rem 5% 3rem;
+    }
 }
 
 .home{
