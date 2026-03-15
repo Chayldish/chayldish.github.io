@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+/* Education Section */
+.education{
+    background-color: black;
+    padding: 5rem 9%;
+}
+
+.heading{
+    text-align: center;
+    font-size: 4.5rem;
+    margin-bottom: 5rem;
+}
+
+.education-container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.education-box{
+    background-color: #1a1a1a;
+    border: 2px solid #b74b4b;
+    border-radius: 1rem;
+    padding: 3rem 2.5rem;
+    min-width: 30rem;
+    flex: 1;
+    max-width: 60rem;
+    transition: 0.3s ease;
+}
+
+.education-box:hover{
+    box-shadow: 0 0 20px #b74b4b;
+    transform: translateY(-5px);
+}
+
+.education-box h3{
+    font-size: 2.7rem;
+    color: white;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.education-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.education-list h1{
+    font-size: 2rem;
+    color: #b74b4b;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.education-list h3{
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.education-list p{
+    font-size: 1.4rem;
+    text-align: center;
+    color: #aaa;
+}
+
+.education-list span:hover{
+    background-color: transparent;
+    color: #b74b4b;
+}
+
+/* Mobile Styles for Education */
+@media(max-width: 768px){
+    .education{
+        padding: 4rem 5%;
+    }
+    
+    .heading{
+        font-size: 2.8rem;
+        margin-bottom: 3rem;
+    }
+    
+    .education-container{
+        gap: 2rem;
+    }
+    
+    .education-box{
+        padding: 2rem 1.5rem;
+        min-width: 100%;
+    }
+    
+    .education-box h3{
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .education-list h1{
+        font-size: 1.6rem;
+    }
+    
+    .education-list h3{
+        font-size: 1.4rem;
+    }
+    
+    .education-list p{
+        font-size: 1.2rem;
+    }
+}
+
+/* Extra Small Devices */
+@media(max-width: 480px){
+    .heading{
+        font-size: 2.4rem;
+    }
+    
+    .education-box h3{
+        font-size: 1.8rem;
+    }
+    
+    .education-list h1{
+        font-size: 1.4rem;
+    }
+    
+    .education-list h3{
+        font-size: 1.2rem;
+    }
+    
+    .education-list p{
+        font-size: 1rem;
+    }
+}
