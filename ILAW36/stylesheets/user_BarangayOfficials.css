@@ -1,0 +1,80 @@
+/* Nav Bar CSS */
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar {
+    background: linear-gradient(45deg, #007bff, #000);
+    color:#ff5722;
+    clear: both;
+}
+
+.navbar ul li a {
+    color: white;
+}
+
+.navbar ul li a:hover {
+    color: #000000;
+}
+
+.navbar-nav .active a {
+    color: white;  
+    font-weight: 500;
+}
+
+.nav-link{
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 1.5rem;
+    padding:1rem;
+    text-decoration: none;
+}
+
+.logout-btn{
+    color: white !important; 
+    border-color: white !important; 
+}
+
+
+/* Nav Bar CSS */
+
+
+/* Rest of the page CSS */
+
+.official_info{
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 24px;
+    
+}
+
+.officials-table{
+    text-align: left;
+    font-size: 22px;
+}
+
+.officials-table-heading{
+    font-family: 'Montserrat';
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.officials-table td{
+    vertical-align: middle;
+}
+
+.officials-table-container{
+    height: 600px;
+    margin-top: 30px;
+
+}
+
+.officials-table-div{
+    height: 600px;
+}

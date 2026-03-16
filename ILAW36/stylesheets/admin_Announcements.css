@@ -1,0 +1,180 @@
+/* Nav Bar CSS */
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar {
+    background: linear-gradient(45deg, #007bff, #000);
+    color: #ff5722;
+    clear: both;
+}
+
+
+.navbar ul li a {
+    color: white;
+}
+
+.navbar ul li a:hover {
+    color: #000000;
+}
+
+.navbar-nav .active a {
+    color: white;
+    font-weight: 500;
+}
+
+.nav-link {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 1.5rem;
+    ;
+    padding: 1rem;
+    text-decoration: none;
+}
+
+
+.logout-btn {
+    color: white;
+    border-color: white;
+}
+
+/* Nav Bar CSS */
+
+/* Modal Css */
+.create-post-heading,
+.edit-post-heading,
+.delete-post-heading {
+    font-family: 'Century Gothic';
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.create-post-form-label,
+.edit-post-form-label,
+.delete-post-form-label {
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.create-post-form-field,
+.edit-post-form-field,
+.delete-post-form-field {
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.create-btn {
+    background-color: #0066ff;
+    color: white;
+    border-color: white;
+    width: 160px;
+    height: 80px;
+}
+
+.search-btn {
+    background-color: #0066ff;
+    color: white;
+    border-color: white;
+
+}
+
+.create-btn:hover,
+.search-btn:hover {
+    background-color: #ff5722;
+    color: white;
+    border-color: white;
+}
+
+.create-post-btn,
+.edit-post-btn,
+.delete-post-btn {
+    background-color: #0066ff;
+    color: white;
+    border-color: white;
+    width: 160px;
+    height: 80px;
+}
+
+.create-post-btn:hover,
+.edit-post-btn:hover,
+.delete-post-btn:hover {
+    background-color: #ff5722;
+    color: white;
+    border-color: white;
+}
+
+/* Modal Css */
+
+
+.posts-container {
+    height: 1000px;
+    width: 1300px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.post-header {
+    color: #000000;
+    background-color: white;
+    font-family: 'Roboto Black';
+    font-size: 35px;
+    vertical-align: middle;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.post-title {
+    color: #000000;
+    font-family: 'Roboto Light';
+    font-size: 25px;
+}
+
+.post-body {
+    font-family: 'Roboto Medium';
+    font-size: 30px;
+    white-space: pre-wrap;
+}
+
+.page-container {
+    padding-bottom: 200px;
+}
+
+.post-card-btn,
+.officials-table-btn {
+    background-color: #0066ff;
+    color: white;
+    border: none;
+    width: 120px;
+    height: 60px;
+}
+
+.post-card-btn:hover {
+    background-color: #ff5722;
+    color: white;
+    border: none;
+}
+
+.post-btn-anchor {
+    display: inline-block;
+}
+
+/* CSS For Dropdown icon */
+.admin-text {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+#ddown li a {
+    color: #000 !important;
+    padding: 8px;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+#ddown {
+    background-color: #ef6969 !important;
+    border: none;
+}
