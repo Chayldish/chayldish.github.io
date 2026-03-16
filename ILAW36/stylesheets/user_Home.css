@@ -1,0 +1,130 @@
+body {
+    font-family: 'Montserrat', sans-serif !important;
+    margin: 0;
+}
+
+/* --------    HEADER    --------  */
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar {
+    background: linear-gradient(45deg, #007bff, #000);
+    color: #ff5722;
+    clear: both;
+}
+
+.navbar ul li a {
+    color: white;
+}
+
+.navbar ul li a:hover {
+    color: #000000;
+}
+
+.navbar-nav .active a {
+    color: white;
+    font-weight: 500;
+}
+
+.nav-link {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-decoration: none;
+}
+
+
+
+
+.logout-btn {
+    color: white !important;
+    border-color: white !important;
+}
+
+#ddown li a {
+    color: #000 !important;
+    padding: 8px;
+}
+
+#ddown {
+    background-color: #ef6969 !important;
+    border: none;
+}
+
+/* --------    HEROAREA    --------  */
+#heroarea {
+    font-weight: 400 !important;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+#heroarea h1 {
+    font-weight: 800 !important;
+    font-size: 3rem;
+    letter-spacing: 3px;
+}
+
+#heroarea p {
+    letter-spacing: 1px;
+    line-height: 50px;
+    font-size: 2rem;
+}
+
+#viewmore-btn {
+    font-size: 1.5rem;
+    width: 200px;
+    height: 80px;
+    color: #fff;
+    background-color: #000;
+    border-radius: 50px;
+    border: none;
+    text-align: center;
+}
+
+/* --------    MISSION / VISION    --------  */
+#mission h4,
+#vision h4 {
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+#mission p,
+#vision p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    line-height: 40px;
+}
+
+
+/* --------    CONTACT    --------  */
+#contact {
+    background-color: #F4F4F4;
+}
+
+#contact #b-top {
+    border-top: 3px solid #070707;
+}
+
+#contact ul {
+    list-style-type: none;
+}
+
+#contact h6 {
+    letter-spacing: 1.4px;
+}
+
+#contact p {
+    letter-spacing: 2.2px;
+}
+
+#contact li {
+    letter-spacing: 1.8px;
+}

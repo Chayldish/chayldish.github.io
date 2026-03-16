@@ -1,0 +1,911 @@
+<?php
+require_once('dbConfig.php');
+require_once('functions.php');
+
+$userObj = new User();
+$database = new Database();
+$db = $database->dbConnection();
+
+session_start();
+
+if (isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    if ($userObj->login($username, $password)) {
+        $_SESSION['session_login'] = ['official_username' => $username];
+        header("Location: admin_Home.php");
+        exit();
+    } else {
+        $_SESSION['errorMessage'] = "Invalid username or password.";
+        header("Location: index.php");
+        exit();
+    }
+}
+
+if (isset($_SESSION['errorMessage'])) {
+    echo '<div class="error">' . $_SESSION['errorMessage'] . '</div>';
+    unset($_SESSION['errorMessage']);
+}
+?>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    font-weight: bold; /* Make all text bold */
+}
+
+h1, h2, h4, p, a, label, .modal-title, .add-resident-form-label {
+    font-weight: bold; /* Make headings, paragraphs, and labels bold */
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold !important; /* Ensure links are bold */
+}
+
+/* Icon Styling */
+.feature-icon, .fas {
+    color: white !important; /* Change icons to white */
+    font-weight: bold; /* Make icon fonts bold */
+}
+
+/* About Section */
+#about {
+    padding: 50px 0;
+}
+
+#about h2 {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#about p {
+    text-align: justify;
+    font-weight: bold;
+}
+
+/* Image Styling */
+.image-scroll-wrapper img {
+    border-radius: 10px;
+    margin-right: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Error Message */
+.error {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    font-size: 24px;
+    color: #fff;
+    background-color: #ff5722;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-weight: bold; /* Make text in the error message bold */
+}
+
+/* Features Section */
+#features .feature-icon {
+    color: white !important; /* Icons are white */
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: bold; /* Icon fonts bold */
+}
+
+#features h4, #features p {
+    color: white !important; /* Ensure text is white */
+    font-weight: bold;
+}
+
+/* Button Styling */
+.btn-primary {
+    font-weight: bold !important; /* Ensure button text is bold */
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 100px 0;
+    background: linear-gradient(rgba(0, 123, 255, 0.7), rgba(255, 138, 101, 0.7)), url('img/bg.png') center center no-repeat;
+    background-size: cover;
+    color: white;
+    position: relative;
+    text-align: center;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.hero-section h1 {
+    animation: slideInDown 1s ease-in-out;
+}
+
+.hero-section p {
+    animation: slideInUp 1s ease-in-out;
+}
+
+.hero-section .btn-primary {
+    background: #ff5722;
+    border: none;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Image Scrolling */
+.image-scroll-container {
+    overflow: hidden;
+    position: relative;
+    padding: 15px 0;
+}
+
+.image-scroll-wrapper {
+    display: flex;
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.bg-custom-image .text-muted {
+    background: linear-gradient(45deg, #007bff, #000);
+    font-weight: bold;
+    color: white !important; /* Override the 'text-muted' class */
+}
+
+
+        </style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <!-- Montseratt Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,800;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="stylesheets/home.css">
+    <link rel="stylesheet" href="stylesheets/admin_Residents.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+
+    <!-- Link for Bootstrap Icons -->
+    <script src="https://kit.fontawesome.com/4aee20adf0.js" crossorigin="anonymous"></script>
+
+    <title>Home</title>
+</head>
+
+<body>
+     
+    <!-- Navbar Markup -->
+    <div>
+        <nav class="navbar navbar-expand-lg mb-5">
+
+            <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbar1">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <img src="img/Logo.png" alt="logo" id="nav-img" class="ml-md-5">
+
+            <div class="navbar-collapse collapse  justify-content-center" id="navbar1">
+                <ul class="navbar-nav">
+
+                    <li class="nav-item pl-3 pr-3 ">
+                        <a class="nav-link" href="index.php">Home</a>
+                    </li>
+
+                    <li class="nav-item pl-3 pr-3 ">
+                        <a class="nav-link" href="index_BarangayOfficials.php">The Officers</a>
+                    </li>
+                    
+                </ul>
+            </div>
+
+            <button class="btn btn-outline-primary login-btn mr-md-5" type="button" id="login-btn" data-toggle="modal" data-target="#login-modal"> Login </button>
+
+        </nav>
+    </div>
+
+    <div>
+                    <!-- // PHP Code for Notification Alert -->
+                    <?php
+
+                        if(isset($_GET['residentAdded']))
+                        {
+                            echo 
+                            '<div style="text-align:center" class = "alert alert-success alert-dismissible fade show" role="alert">
+                                Member Added Successfully.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>                               
+                            </div>';
+                        };
+
+                        ?>
+                </div>
+
+        <!-- Hero Section Content -->
+    <section class="hero-section text-center d-flex align-items-center" id="heroarea">
+    <div class="container">
+        <br><br>
+        <h1 class="display-4 mt-5 mb-3">ILAGAN ASSOCIATION FOR WOMEN</h1>
+        <p class="lead pt-3 pb-2">Not a member of ILAW yet? Register now!</p>
+        
+        <div class="mt-4 mb-3">
+    <button class="btn btn-primary btn-lg custom-size-btn" type="button" data-toggle="modal" data-target="#add-resident-modal">
+        + NEW REGISTRATION
+    </button>
+</div>
+
+        <button id="viewmore-btn" class="btn btn-primary btn-lg mt-3 mb-5">
+            <a class="text-light" href="#mission-vision">VIEW MORE</a>
+        </button>
+    </div>
+</section>
+
+
+<br><br>
+
+        <!-- Mission / Vision -->
+        <div class="row align-items-center justify-content-around bg-primary text-light m-0" id="mission-vision"> 
+            <div class="col-md-5 text-center py-md-5 px-md-0 p-sm-5" id="mission">
+                <h4 class="py-2">MISSION</h4>
+                <p class="py-2">To spearhead and consolidate Women Programs support LGU in aide to legislation of Womens's concerns and execution  of  Women Development Program.</p>
+            </div>
+            <div class="col-md-5 text-center py-md-5 px-md-0 p-sm-5" id="vision">
+                <h4 class="py-2">VISION</h4>
+                <p class="py-2"> A federal city-wide association composed of autonomous barangay chapters that shall promote unity, close relationship towards Total Women Development in the barangays and in our City, do hereby ordain and  promulgate this constitution and by-laws.</p>
+            </div>
+        </div>
+
+        <section id="about" class="py-5">
+    <div class="container" style="background-color: #f0f0f0 !important; padding: 30px !important; border-radius: 10px !important; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important; max-width: 95% !important; margin: 0 auto !important;">
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4 mb-md-0 text-center">
+                <h2 style="font-size: 2rem !important;">History of Ilagan Association of Women</h2>
+                <p style="text-align: justify; font-size: 1rem !important;">In Ilagan, Isabela, ILAW was founded and created by Olive Domingo on September 10, 2008, with the goal of promoting unity and improving women's development. At the time, there were only 50 members. The organization's membership grew over time, which led to the adoption of a per-barangay officer election system and a 20-peso membership fee, which would serve as a crucial source of income for their numerous activities. They also gave their members 20-peso identity cards. ILAW acknowledged the value of working with the local government unit (LGU) despite its non-governmental status to get crucial financial support because finances were few.</p>
+                <p style="text-align: justify; font-size: 1rem !important;">ILAW's headquarters, recognized as the Center for Women's Development, can be found on the first floor of the municipal hall in Ilagan, Isabela, generously provided by the LGU. This central location guarantees easy access and convenience for ILAW's members and strengthens its role as an effective LGU partner in the empowerment and development of women. Additionally, ILAW can establish chapter offices in each of the 91 barangays throughout Ilagan and significant sitios within the municipality.</p>
+            </div>
+            <div class="col-md-6 text-center d-flex align-items-center">
+                <div class="image-scroll-container w-100" style="height: 100%; display: flex; align-items: center;">
+                    <div class="image-scroll-wrapper" style="height: 100%;">
+                        <img src="img/logos.png" alt="About Us" class="img-fluid rounded shadow" style="max-height: 100%; width: auto;">
+                        <img src="img/logos.png" alt="About Us" class="img-fluid rounded shadow" style="max-height: 100%; width: auto;">
+                        <img src="img/logos.png" alt="About Us" class="img-fluid rounded shadow" style="max-height: 100%; width: auto;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="py-5 text-center">
+    <div class="container" style="background-color: #007bff !important; padding: 30px !important; border-radius: 10px !important; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;">
+    <h4 style="font-size: 2rem !important; color: white !important;">OBJECTIVES</h4>
+        <div class="row justify-content-center">
+            <div class="col-md-12 mb-4">
+                <i class="fas fa-shield-alt fa-3x feature-icon"></i>
+
+                <p style="font-size: 1.2rem !important; color: white !important;">The center aims to guide women on the wisdom of being united, the art of loving, build bridges the will to succeed, undaunted of new horizon faith in new beginnings, it is a place where women dare to dream once again!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        <!-- Contact -->
+        <div class="row m-0 justify-content-center" id="contact">
+            <div class="col-12 text-center p-5 pb-lg-5 pb-md-0 pb-sm-0">
+                <h4>CONTACT</h4>
+            </div>
+            <div class="col-lg-4 align-items-center col-sm-10 p-5 clearfix" >
+                <h5 class="pb-3 pt-sm-0">Get In Touch</h5>
+                <p class="pt-4" id="b-top"></p>
+
+
+                <img src="./img/email-icon.png" alt="email-icon">
+                <ul class="d-inline-block m-4 p-0 pl-1 clearfix">
+                    <li >ILAW@gmail.com</li>
+</ul>
+<br>
+                <img src="./img/telephone-icon.png" alt="phone-icon">
+                <ul class="d-inline-block m-0 p-0 pl-3 clearfix">
+                    <li>+ 63 97 6264 6047</li>
+                    <li>+ 63 96 5159 4762</li>
+                </ul>
+                <br>
+                <br>
+            </div>
+
+            <div class="col-lg-5 col-md-10 col-sm-10 align-items-center pl-5 pt-lg-5 mb-lg-5 mb-md-0 mb-sm-0" id="b-left">
+                <h6 class="pb-3">San Vicente, City of Ilagan, Isabela</h6> 
+                <img src="./img/map.png " alt="location" class="mb-lg-5 mb-sm-0 mb-md-0 img-fluid"> 
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="row m-0 p-0 bg-custom-image">
+    <div class="col-12 text-center text-muted">
+        <p class="m-0 pb-3 mt-md-2 mt-sm-2">Ilagan Association for Women, Copyright ©️ 2024</p>
+    </div>
+</div>
+
+<!-- Warning Modal -->
+<div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="warningModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="warningModalLabel">Warning</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Right-click is disabled on this page for security reasons.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- Markup for Login Modal -->
+            <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modal" aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h1 class="modal-title login-modal-heading" id="login-modal-heading">Login</h1>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="form-container">
+                                <form>
+
+                                    <div class="form-row">
+                                        <div class="col-md-12 form-group ">
+                                            <div class="input-group mb-2">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text"><i class="fas fa-user"> </i> </span>
+                                                </div>
+                                                <input type="text" name="username_field" id="username_field" class="form-control login-modal-field" placeholder="Enter Username" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="col-md-12 form-group ">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text"><i class="fas fa-key"> </i> </span>
+                                                </div>
+                                                <input type="password" name="password_field" id="password_field" class="form-control login-modal-field" placeholder="Enter Password" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row justify-content-center">
+                                        <div class="col form-group text-right  pr-2 mr-2">
+                                            <button type="submit" class="btn login-modal-btn" id="btn_login" name="btn_login">Sign in</button>                                   
+                                        </div>
+                                        <div class="col form-group text-left pl-2 ml-2">
+                                            <button type="button" data-dismiss="modal" class="btn login-modal-btn" id="btn_cancel" name="btn_cancel">Cancel</button>                                   
+                                        </div>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+     <!-- Markup for Add Resident Modal -->
+     <div class="modal fade" id="add-resident-modal" tabindex="-1" role="dialog" aria-labelledby="add-resident-modal" aria-hidden="true">
+               
+               <div class="modal-dialog modal-lg" role="document">
+
+                   <div class="modal-content">
+                       <div class="modal-header">
+                       <h5 class="modal-title add-resident-heading" id="add-resident-heading" style="font-family: 'Montserrat', sans-serif !important; font-size: 18px; font-weight: bold;">Membership Application</h5>
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                               <span aria-hidden="true">&times;</span>
+                           </button>
+                       </div>
+
+                       <div class="modal-body">
+                           <form action="admin_Actions.php" method="post">
+
+                               <div class="form-row">
+
+                                   <div class="col-md-4 form-group ">
+                                       <label for="first_name_field" class="add-resident-form-label" >First Name</label>
+                                       <input type="text" class="form-control add-resident-form-field" placeholder="Given Name" id="first_name_field" name="first_name_field" style="text-transform: capitalize"  pattern="[A-Za-z\s]+" title="Please enter only letters" required>
+                                   </div>
+
+                                   <div class="col-md-4 form-group">
+                                       <label for="middle_name_field" class="add-resident-form-label" >Middle Name</label>
+                                       <input type="text" class="form-control add-resident-form-field" placeholder="Given Name" id="middle_name_field" name="middle_name_field" style="text-transform: capitalize" pattern="[A-Za-z\s]+" title="Please enter only letters" required>
+                                   </div>
+
+                                   <div class="col-md-4 form-group">
+                                       <label for="last_name_field" class="add-resident-form-label" >Last Name</label>
+                                       <input type="text" class="form-control add-resident-form-field" placeholder="Given Name" id="last_name_field" name="last_name_field" style="text-transform: capitalize" pattern="[A-Za-z\s]+" title="Please enter only letters" required>
+                                   </div>    
+                               </div>
+
+                               <div class="form-row">
+                               <div class="col-md-6 form-group">
+                                    <label for="purok_field" class="add-resident-form-label">Purok</label>
+                                    <input type="number" class="form-control add-resident-form-field" placeholder="Purok" id="purok_field" name="purok_field" min="1" max="15" required>
+                                </div>
+
+                                <div class="col-md-6 form-group">
+    <label for="barangay_field" class="add-resident-form-label">Barangay</label>
+    <input class="form-control add-resident-form-field" list="barangay_list" id="barangay_field" name="barangay_field" placeholder="Start typing barangay name"  required>
+    <datalist id="barangay_list">
+    <option value="Aggasian"></option>
+<option value="Alibagu"></option>
+<option value="Alinguigan 1st"></option>
+<option value="Alinguigan 2nd"></option>
+<option value="Alinguigan 3rd"></option>
+<option value="Arusip"></option>
+<option value="Baculud"></option>
+<option value="Bagong Silang"></option>
+<option value="Bagumbayan"></option>
+<option value="Ballacong"></option>
+<option value="Baligatan"></option>
+<option value="Bangag"></option>
+<option value="Batong Labang"></option>
+<option value="Bigao"></option>
+<option value="Bliss"></option>
+<option value="Cabannungan 1st"></option>
+<option value="Cabannungan 2nd"></option>
+<option value="Cabisera 1"></option>
+<option value="Cabisera 2"></option>
+<option value="Cabisera 3"></option>
+<option value="Cabisera 4"></option>
+<option value="Cabisera 5"></option>
+<option value="Cabisera 6-24"></option>
+<option value="Cabisera 7"></option>
+<option value="Cabisera 8"></option>
+<option value="Cabisera 9-11"></option>
+<option value="Cabisera 10"></option>
+<option value="Cabisera 14-16"></option>
+<option value="Cabisera 17-21"></option>
+<option value="Cabisera 19"></option>
+<option value="Cabisera 22"></option>
+<option value="Cabisera 23"></option>
+<option value="Cabisera 25"></option>
+<option value="Cabisera 27"></option>
+<option value="Cadu"></option>
+<option value="Calamagui 1st"></option>
+<option value="Calamagui 2nd"></option>
+<option value="Camunatan"></option>
+<option value="Capellan"></option>
+<option value="Capo"></option>
+<option value="Carikkikan Norte"></option>
+<option value="Carikkikan Sur"></option>
+<option value="Centro Poblacion"></option>
+<option value="Centro San Antonio"></option>
+<option value="Fugu"></option>
+<option value="Fuyo"></option>
+<option value="Gayong Gayong Norte"></option>
+<option value="Gayong Gayong Sur"></option>
+<option value="Guinatan"></option>
+<option value="Lullutan"></option>
+<option value="Malalam"></option>
+<option value="Malasin"></option>
+<option value="Manaring"></option>
+<option value="Mangcuram"></option>
+<option value="Marana 1st"></option>
+<option value="Marana 2nd"></option>
+<option value="Marana 3rd"></option>
+<option value="Minabang"></option>
+<option value="Morado"></option>
+<option value="Naguilian Norte"></option>
+<option value="Naguilian Sur"></option>
+<option value="Namnama"></option>
+<option value="Nanaguan"></option>
+<option value="Osmena"></option>
+<option value="Paliueg"></option>
+<option value="Pasa"></option>
+<option value="Pilar"></option>
+<option value="Quimalabasa"></option>
+<option value="Rang-Ayan"></option>
+<option value="Rugao"></option>
+<option value="Salindingan"></option>
+<option value="San Andres"></option>
+<option value="San Felipe"></option>
+<option value="San Ignacio"></option>
+<option value="San Isidro"></option>
+<option value="San Juan"></option>
+<option value="San Lorenzo"></option>
+<option value="San Pablo"></option>
+<option value="San Rodrigo"></option>
+<option value="San Vicente"></option>
+<option value="Santa Barbara"></option>
+<option value="Santa Catalina"></option>
+<option value="Santa Isabel Norte"></option>
+<option value="Santa Isabel Sur"></option>
+<option value="Santa Victoria"></option>
+<option value="Santo Tomas"></option> <!-- Corrected position -->
+<option value="Siffu"></option>
+<option value="Sindon Bayabo"></option>
+<option value="Sindon Maride"></option>
+<option value="Sipay"></option>
+<option value="Tangcul"></option>
+<option value="Villa Imelda"></option>
+    </datalist>
+</div>
+</div>
+
+                               <div class="form-row">
+
+                               <div class="col-md-4 form-group">
+                                       <label for="birthday_field" class="add-resident-form-label" >Birthdate</label>
+                                       <input type="date" class="form-control add-resident-form-field" id="birthday_field" name="birthday_field"  required>                                       
+                                   </div>
+
+                                   <div class="col-md-4 form-group">
+                                       <label for="suffix_field" class="add-resident-form-label" >Birthplace</label>
+                                       <input type="text" class="form-control add-resident-form-field" placeholder="Birthplace" id="suffix_field" name="suffix_field" style="text-transform: capitalize" pattern="[A-Za-z\s]+" title="Please enter only letters" required> 
+                                   </div>
+
+                                   <div class="col-md-4 form-group">
+                                       <label for="sex_field" class="add-resident-form-label" >Residency Data</label>
+                                       <select class="form-control add-resident-form-field" id="sex_field" placeholder="Residency Data" name="sex_field" required>
+                                           <option></option>
+                                           <option>Since Birth</option>
+                                           <option>Recently Moved</option>
+                                           <option>OFW</option>
+                                       </select>
+                                   </div>
+                                   
+                               </div>
+
+                               <div class="form-row">
+
+                                   <div class="col-md-4 form-group">
+                                       <label for="civil_stat_field" class="add-resident-form-label" >Civil Status</label>
+                                       <select class="form-control add-resident-form-field" id="civil_stat_field"  placeholder="Civil Status" name="civil_stat_field" required>
+                                           <option></option>
+                                           <option>Single</option> 
+                                           <option>Married</option>
+                                           <option>Widowed</option>
+                                           <option>Seperated</option>
+                                           <option>Annuled</option>
+                                       </select>
+                                   </div>
+
+                                   <div class="col-md-4 form-group">
+                                       <label for="alias_field" class="add-resident-form-label" >Religion</label>
+                                       <input type="text" class="form-control add-resident-form-field" placeholder="Religion" id="alias_field" name="alias_field" style="text-transform: capitalize" pattern="[A-Za-z\s]+" title="Please enter only letters" required>
+                                   </div>
+
+                                   <div class="col-md-4 form-group">
+                                       <label for="voter_stat_field" class="add-resident-form-label" >Employment</label>
+                                       <select class="form-control add-resident-form-field" id="voter_stat_field" placeholder="Employment" name="voter_stat_field" required>    
+                                           <option></option>
+                                           <option>Government</option>
+                                           <option>Private</option>
+                                           <option>Self-employed</option> 
+                                           <option>None</option> 
+                                       </select>
+                                   </div>    
+                               </div>
+
+                               <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title add-resident-heading" id="add-resident-heading" style="font-family: 'Montserrat', sans-serif !important; font-size: 16px; font-weight: bold;">If applicable: (If not, please input "N/A")</h5>
+                                </div>
+
+                               <div class="form-row">
+                                   <div class="col-md-6 form-group">
+                                       <label for="mobile_no_field" class="add-resident-form-label" >Spouse First Name</label>
+                                       <input type="text" class="form-control add-resident-form-field" id="mobile_no_field" placeholder="Spouse First Name" name="mobile_no_field" style="text-transform: capitalize" pattern="[A-Za-z\s/]+" title="Please enter only letters" required>
+                                   </div>
+
+                                   <div class="col-md-6 form-group">
+                                       <label for="email_field" class="add-resident-form-label" >Spouse Last Name</label>
+                                       <input type="text" class="form-control add-resident-form-field" id="email_field" placeholder="Spouse Last Name" name="email_field" style="text-transform: capitalize" pattern="[A-Za-z\s/]+"  title="Please enter only letters" required>
+                                   </div>
+                               </div>
+
+                               <label class="add-resident-form-label mt-1 mb-3 ml-3" style="font-family: 'Montserrat', sans-serif !important; font-size: 16px; font-weight: bold;">Parents Name:</label>
+
+                               <div class="form-row">
+                                   <div class="col-md-6 form-group">
+                                       <label for="religion_field" class="add-resident-form-label" >Father's First Name</label>
+                                       <input type="text" class="form-control add-resident-form-field" placeholder="Father's First Name" id="religion_field" name="religion_field" style="text-transform: capitalize" pattern="[A-Za-z\s]+" title="Please enter only letters" required>
+                                   </div>
+
+                                <div class="col-md-6 form-group">
+                                    <label for="fathers_last_name_field" class="add-resident-form-label">Father's Last Name</label>
+                                    <input type="text" class="form-control add-resident-form-field" placeholder="Father's Last Name" id="fathers_last_name_field" name="fathers_last_name_field" style="text-transform: capitalize" pattern="[A-Za-z\s]+" title="Please enter only letters" required>
+                                </div>
+                               </div>
+
+                               <div class="form-row">
+                               <div class="col-md-4 form-group">
+                                        <label for="mothers_first_name_field" class="add-resident-form-label">Mother's First Name</label>
+                                        <input type="text" class="form-control add-resident-form-field" placeholder="Mother's First Name" id="mothers_first_name_field" name="mothers_first_name_field" style="text-transform: capitalize" pattern="[A-Za-z\s]+" title="Please enter only letters" required>
+                                    </div>
+
+                                    <div class="col-md-4 form-group">
+                                        <label for="mothers_last_name_field" class="add-resident-form-label">Mother's Last Name</label>
+                                        <input type="text" class="form-control add-resident-form-field" placeholder="Mother's Last Name" id="mothers_last_name_field" name="mothers_last_name_field" style="text-transform: capitalize" pattern="[A-Za-z\s]+" title="Please enter only letters" required>
+                                    </div>
+
+                                    <div class="col-md-4 form-group">
+    <label for="num_children_field" class="add-resident-form-label">Number of Children</label>
+    <input type="number" class="form-control add-resident-form-field" placeholder="Number of Children" id="num_children_field" name="num_children_field" min="0" max="50" required>
+</div>
+                                </div>
+                                </div>
+
+                               <div class="row"  id="username_check" >
+                    </div>
+
+                               <div class="form-row">
+                               <div class="col-md-6 form-group ">
+    <label for="username_field" class="add-resident-form-label">Username</label>
+    <input type="text" class="form-control add-resident-form-field" placeholder="Username" id="username_field" name="username_field" required>
+</div>
+
+                                   <div class="col-md-6 form-group">
+                                       <label for="password_field" class="add-resident-form-label" >Password</label>
+                                       <input type="text" class="form-control add-resident-form-field" placeholder="Password" id="password_field" name="password_field" required>
+                                   </div>
+                    </div>
+
+                               <input type="hidden" id="submission_date" name="submission_date">
+
+                               <div class="row justify-content-center">
+
+                                   <div class="col text-right mt-2 mb-2">
+                                       <button type="submit" class="btn btn-primary add-resident-btn" id="btn_add_resident" name="btn_add_resident">SUBMIT</button>                                   
+                                   </div>
+
+                                   <div class="col text-left mt-2 mb-2">
+                                       <button type="button" class="btn btn-primary add-resident-btn" data-dismiss="modal">CANCEL</button>                            
+                                   </div>
+                               </div>
+                           </form>
+                       </div>                           
+                   </div>
+               </div>
+           </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"> </script>
+    
+    <script>
+    // Disable right-click context menu and show warning modal
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        $('#warningModal').modal('show');
+    });
+
+    // Function to capitalize the first letter of the input
+    function capitalizeFirstLetter(inputField) {
+        inputField.addEventListener("input", function() {
+            this.value = this.value.charAt(0).toUpperCase() + this.value.slice(1).toLowerCase();
+        });
+    }
+
+    capitalizeFirstLetter(document.getElementById("first_name_field"));
+    capitalizeFirstLetter(document.getElementById("middle_name_field"));
+    capitalizeFirstLetter(document.getElementById("last_name_field"));
+    capitalizeFirstLetter(document.getElementById("suffix_field"));
+    capitalizeFirstLetter(document.getElementById("alias_field"));
+    capitalizeFirstLetter(document.getElementById("mobile_no_field"));
+    capitalizeFirstLetter(document.getElementById("email_field"));
+    capitalizeFirstLetter(document.getElementById("religion_field"));
+    capitalizeFirstLetter(document.getElementById("fathers_last_name_field"));
+    capitalizeFirstLetter(document.getElementById("mothers_first_name_field"));
+    capitalizeFirstLetter(document.getElementById("mothers_last_name_field"));
+
+
+        // Clear Add Modal Form when Closing
+        function clear_modal_add()
+            {
+                $('#add-resident-modal').on('hidden.bs.modal', function (e) {
+                $(this)
+                    .find("input,textarea,select")
+                    .val('')
+                    .end()
+                    .find("input[type=checkbox], input[type=radio]")
+                    .prop("checked", "")
+                    .end();
+                })
+            }
+
+        // Clear Modal Form when Closing
+        function clear_modal()
+        {
+            $('#login-modal').on('hidden.bs.modal', function (e) {
+            $(this)
+                .find("input,textarea,select")
+                .val('')
+                .end()
+                .find("input[type=checkbox], input[type=radio]")
+                .prop("checked", "")
+                .end();
+            })
+        }
+
+        //Login Button Function
+        function login()
+        {
+            $('#btn_login').click(function(e){
+
+                var valid = this.form.checkValidity();
+                
+                if(valid)
+                {
+
+                    var username = $('#username_field').val();
+                    var password = $('#password_field').val();
+
+                    e.preventDefault();
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'admin_Actions.php',
+                        data: {current_username: username, current_password: password},
+                        success: function(data){
+                            
+                            if($.trim(data) ==="0")
+                            {
+                                Swal.fire
+                                ({
+                                    title: 'Login Success',
+                                    text: 'Official Login',
+                                    icon: 'success'
+                                })
+
+                                setTimeout('window.location.href = "admin_Home.php"',2000);
+
+                            }
+
+                            else if($.trim(data) ==="1")
+                            {
+                                Swal.fire
+                                ({
+                                    title: 'Login Success',
+                                    text: 'Resident Login',
+                                    icon: 'success'
+                                })
+
+                                setTimeout('window.location.href = "user_Home.php"',2000);
+
+                            }
+
+                            else
+                            {
+                                Swal.fire
+                                ({
+                                    title: 'Failed',
+                                    text: data,
+                                    icon: 'error'
+                                })
+                            }
+                        },
+
+                        error: function(data){
+                            Swal.fire
+                                ({
+                                title: 'Failed',
+                                text: 'Login Failed',
+                                icon: 'error'
+                                })
+                        }
+
+                    });
+                };
+
+                $('#login-modal')
+                .find("input,textarea,select")
+                .val('')
+                .end()
+                .find("input[type=checkbox], input[type=radio]")
+                .prop("checked", "")
+                .end();
+
+            });
+
+        }
+
+        //fetch the date
+        function setCurrentDate() {
+    const currentDate = new Date().toISOString().slice(0, 10); 
+    document.getElementById("submission_date").value = currentDate;
+}
+
+$('#add-resident-modal').on('show.bs.modal', function () {
+    setCurrentDate();
+});
+
+        $(document).ready(function(){
+            clear_modal_add();
+            clear_modal();
+            login();
+        });
+
+    </script>
+
+</body>
+
+</html>

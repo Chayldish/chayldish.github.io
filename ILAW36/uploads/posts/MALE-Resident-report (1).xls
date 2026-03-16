@@ -1,0 +1,216 @@
+
+<br>
+ <center> Republic of the Philippines<br>
+Province of Cavite<br>
+Municipality of Indang<br>
+    BARANGAY -------<br>
+</center><br><br>
+
+
+   <table class="table" bordered="1">  
+      <th scope="col">ID</th>
+      <th scope="col">Firstname</th>
+      <th scope="col">Middle</th>
+      <th scope="col">Lastname</th>
+      <th scope="col">Suffix</th>
+      <th scope="col">Birthdate</th>
+      <th scope="col">Marital</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Religion</th>
+        <th scope="col">Nationality</th>
+          <th scope="col">Citizenship</th>
+        <th scope="col">Occupation</th>
+         <th scope="col">Status</th>
+            <th scope="col">Date record</th>
+                    </tr>
+  
+    <tr>  
+                           <td>1</td>  
+                                    <td>Rhalp Darren</td>  
+                                    <td>R.</td>  
+                                    <td>Cabrera</td>  
+                                    <td>N/A</td> 
+                                      <td>1997-09-26</td>  
+                                    <td>Single</td>  
+                                    <td>Male</td> 
+                                    <td>Roman Catholic</td>
+                                    <td>Filipino</td>  
+                                    <td>Filipino</td>    
+                                     <td>Driver</td>   
+                                      <td>Unemployed</td>
+                                      <td>2018-04-23 04:04:44</td>  
+                    </tr>
+   
+    <tr>  
+                           <td>2</td>  
+                                    <td>Amorlito</td>  
+                                    <td>T</td>  
+                                    <td>Mojica</td>  
+                                    <td>N/A</td> 
+                                      <td>2018-04-24</td>  
+                                    <td>Single</td>  
+                                    <td>Male</td> 
+                                    <td>Roman Catholic</td>
+                                    <td>Filipino</td>  
+                                    <td>Filipino</td>    
+                                     <td>Barangay Official</td>   
+                                      <td>Employed Government</td>
+                                      <td>2018-04-18 21:17:42</td>  
+                    </tr>
+   
+    <tr>  
+                           <td>3</td>  
+                                    <td>Christopher </td>  
+                                    <td>H</td>  
+                                    <td>Mojica</td>  
+                                    <td>N/A</td> 
+                                      <td>2018-04-10</td>  
+                                    <td>Single</td>  
+                                    <td>Male</td> 
+                                    <td>Roman Catholic</td>
+                                    <td>Filipino</td>  
+                                    <td>Filipino</td>    
+                                     <td>Barangay Official</td>   
+                                      <td>Employed Government</td>
+                                      <td>2018-04-18 21:17:54</td>  
+                    </tr>
+   
+    <tr>  
+                           <td>4</td>  
+                                    <td>Edgar </td>  
+                                    <td>M</td>  
+                                    <td>Mojica</td>  
+                                    <td>N/A</td> 
+                                      <td>2018-04-17</td>  
+                                    <td>Single</td>  
+                                    <td>Male</td> 
+                                    <td>Roman Catholic</td>
+                                    <td>Filipino</td>  
+                                    <td>Filipino</td>    
+                                     <td>Barangay Official</td>   
+                                      <td>Employed Government</td>
+                                      <td>2018-04-18 21:18:04</td>  
+                    </tr>
+   
+    <tr>  
+                           <td>5</td>  
+                                    <td>Emelita</td>  
+                                    <td>C</td>  
+                                    <td>Climacosa</td>  
+                                    <td>N/A</td> 
+                                      <td>2018-04-03</td>  
+                                    <td>Single</td>  
+                                    <td>Male</td> 
+                                    <td>Roman Catholic</td>
+                                    <td>Filipino</td>  
+                                    <td>Filipino</td>    
+                                     <td>Barangay Official</td>   
+                                      <td>Employed Government</td>
+                                      <td>2018-04-18 21:18:12</td>  
+                    </tr>
+   
+    <tr>  
+                           <td>6</td>  
+                                    <td>Emilio</td>  
+                                    <td>S</td>  
+                                    <td>Pinpin</td>  
+                                    <td>N/A</td> 
+                                      <td>2018-04-11</td>  
+                                    <td>Single</td>  
+                                    <td>Male</td> 
+                                    <td>Roman Catholic</td>
+                                    <td>Filipino</td>  
+                                    <td>Filipino</td>    
+                                     <td>Barangay Official</td>   
+                                      <td>Employed Government</td>
+                                      <td>2018-04-18 21:18:24</td>  
+                    </tr>
+   
+    <tr>  
+                           <td>7</td>  
+                                    <td>Fernando</td>  
+                                    <td>V</td>  
+                                    <td>Rupido</td>  
+                                    <td>N/A</td> 
+                                      <td>1980-04-10</td>  
+                                    <td>Married</td>  
+                                    <td>Male</td> 
+                                    <td>Roman Catholic</td>
+                                    <td>Filipino</td>  
+                                    <td>Filipino</td>    
+                                     <td>Barangay Official</td>   
+                                      <td>Employed Government</td>
+                                      <td>2018-04-18 21:18:32</td>  
+                    </tr>
+   
+    <tr>  
+                           <td>8</td>  
+                                    <td>Jayson</td>  
+                                    <td>R</td>  
+                                    <td>Papa</td>  
+                                    <td>N/A</td> 
+                                      <td>1980-12-08</td>  
+                                    <td>Married</td>  
+                                    <td>Male</td> 
+                                    <td>Roman Catholic</td>
+                                    <td>Filipino</td>  
+                                    <td>Filipino</td>    
+                                     <td>Barangay Official</td>   
+                                      <td>Employed Government</td>
+                                      <td>2018-04-18 21:18:38</td>  
+                    </tr>
+   
+    <tr>  
+                           <td>9</td>  
+                                    <td>Primo </td>  
+                                    <td>P</td>  
+                                    <td>Mojica</td>  
+                                    <td>N/A</td> 
+                                      <td>1980-12-01</td>  
+                                    <td>Married</td>  
+                                    <td>Male</td> 
+                                    <td>Roman Catholic</td>
+                                    <td>Filipino</td>  
+                                    <td>Filipino</td>    
+                                     <td>Barangay Official</td>   
+                                      <td>Employed Government</td>
+                                      <td>2018-04-18 21:18:45</td>  
+                    </tr>
+   
+    <tr>  
+                           <td>10</td>  
+                                    <td>Ruelito</td>  
+                                    <td>T</td>  
+                                    <td>Rodriguez</td>  
+                                    <td>N/A</td> 
+                                      <td>1978-12-08</td>  
+                                    <td>Single</td>  
+                                    <td>Male</td> 
+                                    <td>Roman Catholic</td>
+                                    <td>Filipino</td>  
+                                    <td>Filipino</td>    
+                                     <td>Barangay Official</td>   
+                                      <td>Employed Government</td>
+                                      <td>2018-04-18 21:20:08</td>  
+                    </tr>
+   
+    <tr>  
+                           <td>13</td>  
+                                    <td>asdasd</td>  
+                                    <td>asdasd</td>  
+                                    <td>asdasd</td>  
+                                    <td>CFRE</td> 
+                                      <td>2018-04-19</td>  
+                                    <td>Single</td>  
+                                    <td>Male</td> 
+                                    <td>Baptist</td>
+                                    <td>Filipino</td>  
+                                    <td>Filipino</td>    
+                                     <td>Factory Worker</td>   
+                                      <td>Employed</td>
+                                      <td>2018-04-23 00:53:49</td>  
+                    </tr>
+   </table> <br><br><br><br>Prepared By:<br><br> <br>
+   Signature: ___________________________<br>
+   Name:<br>
+   Position:
