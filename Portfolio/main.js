@@ -170,3 +170,170 @@ if (hireForm) {
     });
 }
 
+// ── Design Section Tab Filtering ───────────────────────────────────────────────
+const tabBtns = document.querySelectorAll('.tab-btn');
+const designCategories = document.querySelectorAll('.design-category');
+
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        tabBtns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+        });
+        // Add active class to clicked button
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        
+        const category = btn.dataset.category;
+        
+        // Show/hide categories based on selection
+        designCategories.forEach(cat => {
+            if (category === 'all') {
+                // Show all categories
+                cat.classList.add('active');
+            } else {
+                cat.classList.remove('active');
+                if (cat.id === `${category}-category`) {
+                    cat.classList.add('active');
+                }
+            }
+        });
+    });
+});
+
+// Initialize: show all categories by default (All Projects)
+if (designCategories.length > 0) {
+    designCategories.forEach(cat => cat.classList.add('active'));
+}
+
+// Store interval IDs for cleanup
+const galleryIntervals = [];
+
+// ── Gallery Slider for Project Images ───────────────────────────────────────────
+gallerySliders.forEach(slider => {
+    const slides = slider.querySelectorAll('.gallery-slide');
+    const container = slider.parentElement;
+    const prevBtn = container.querySelector('.gallery-btn.prev');
+    const nextBtn = container.querySelector('.gallery-btn.next');
+    let currentSlide = 0;
+    let slideInterval = null;
+    
+    if (slides.length > 1) {
+        // Show navigation buttons
+        if (prevBtn) prevBtn.style.display = 'flex';
+        if (nextBtn) nextBtn.style.display = 'flex';
+        
+        // Previous button click
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (slideInterval) {
+                    clearInterval(slideInterval);
+                    slideInterval = setInterval(autoAdvance, 5000);
+                }
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+            });
+        }
+        
+        // Next button click
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (slideInterval) {
+                    clearInterval(slideInterval);
+                    slideInterval = setInterval(autoAdvance, 5000);
+                }
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            });
+        }
+        
+        // Auto-advance slides every 5 seconds
+        function autoAdvance() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        slideInterval = setInterval(autoAdvance, 5000);
+        galleryIntervals.push(slideInterval);
+    }
+});
+
+// Cleanup intervals on page unload to prevent memory leaks
+window.addEventListener('beforeunload', () => {
+    galleryIntervals.forEach(interval => clearInterval(interval));
+});
+
+// ── Lightbox for Project Gallery ───────────────────────────────────────────────
+const ilawImages = [
+        "ilaw/maindashboard.jpg",
+        "ilaw/loginform.png",
+        "ilaw/maindashboardmission-vission.jpg",
+        "ilaw/dashboard-location.jpg",
+        "ilaw/admin-dashboard.png",
+        "ilaw/admin-memberlist.png",
+        "ilaw/admin-officerlist.png",
+        "ilaw/admin-memberrequestacc.png",
+        "ilaw/admin-memberstransaction.png",
+        "ilaw/admin-documents.png",
+        "ilaw/admin-cluster.png",
+        "ilaw/admin-barangaycluster.png",
+        "ilaw/members-maindashboard.png",
+        "ilaw/members-personalinfo.png",
+        "ilaw/members-uploadreciept.png",
+        "ilaw/members-officerreview.png",
+        "ilaw/member-announcement.png",
+        "ilaw/announcement.png",
+        "ilaw/clients-documents.png"
+];
+
+let currentLightboxSlide = 0;
+
+function openGalleryLightbox(event, gallery) {
+    event.preventDefault();
+    currentLightboxSlide = 0;
+    showLightboxSlide();
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+function showLightboxSlide() {
+    const img = document.getElementById('lightbox-img');
+    const currentSpan = document.getElementById('lightbox-current');
+    const totalSpan = document.getElementById('lightbox-total');
+    
+    img.src = ilawImages[currentLightboxSlide];
+    currentSpan.textContent = currentLightboxSlide + 1;
+    totalSpan.textContent = ilawImages.length;
+}
+
+function changeLightboxSlide(direction) {
+    currentLightboxSlide += direction;
+    if (currentLightboxSlide < 0) {
+        currentLightboxSlide = ilawImages.length - 1;
+    } else if (currentLightboxSlide >= ilawImages.length) {
+        currentLightboxSlide = 0;
+    }
+    showLightboxSlide();
+}
+
+// Keyboard navigation for lightbox
+document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox.classList.contains('active')) return;
+    
+    if (e.key === 'ArrowLeft') changeLightboxSlide(-1);
+    if (e.key === 'ArrowRight') changeLightboxSlide(1);
+    if (e.key === 'Escape') closeLightbox();
+});
+

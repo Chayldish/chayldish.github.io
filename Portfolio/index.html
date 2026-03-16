@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +7,13 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/skills.css">
         <link rel="stylesheet" href="css/education.css">
-        <link rel="stylesheet" href="css/experince.css">
+        <link rel="stylesheet" href="css/experience.css">
         <link rel="stylesheet" href="css/design.css">
         <title>Playground</title>
     </head>
     <body>
         <header>
-            <a href="#" class="logo">Yemete kyah</a>
+            <a href="#home" class="logo">Sam Santiago</a>
 
             <button id="menu-toggle" aria-label="Toggle menu">
                 <span></span>
@@ -65,7 +65,7 @@
                 <img src="main.jpg/main.jpg" alt="">
             </div>
             <div class="home-content">
-                <h1> Hi, It's <span>Naoya</span></h1>
+                <h1> Hi, It's <span>Sam</span></h1>
                 <h3 class="typing-text">I'm a <span></span></h3>
                 <p>I am a passionate Web Developer who enjoys creating responsive and user-friendly websites. I focus on writing clean, efficient, and maintainable code to build high-quality web applications. I have experience working with modern web technologies to turn ideas into functional digital solutions. I am always eager to learn new tools and improve my development skills. My goal is to create websites that provide great performance and an excellent user experience.</p>
                 <div class="social-icons">
@@ -140,7 +140,7 @@
                     <h3><span>On-the-Job Training | XentroMall Ilagan | Ilagan City, Isabela</span></h3>
                     <div class="experience-list">
                         <h5>APRIL 2025 – JUNE 2025</h5>
-                        <p2>Managed network infrastructure and provided troubleshooting support for PCs and printers across designated areas. Configured and installed CCTV cameras at assigned locations. Administered and maintained Fortinet firewall systems to enhance network security. Assisted employees with tenant file listings, record management, and ID generation processes.</p2>
+                        <p>Managed network infrastructure and provided troubleshooting support for PCs and printers across designated areas. Configured and installed CCTV cameras at assigned locations. Administered and maintained Fortinet firewall systems to enhance network security. Assisted employees with tenant file listings, record management, and ID generation processes.</p>
                     </div>
                 </div>
             </div>
@@ -149,23 +149,235 @@
                     <h3><span>Capstone Project – Saint Ferdinand College | Web based Online Registration for Ilagan Associated of Women (ILAW) | Ilagan, Isabela</span></h3>
                     <div class="experience-list">
                         <h5>AUGUST 2024 – NOVEMBER 2024</h5>
-                        <p2>Was responsible for performing complete testing on a website to find defects, limitations in the system, and/or bugs. Documented findings and worked closely with developers to ensure timely resolution of all issues found. Assisted in the improvement of front-end design by reviewing UI elements, usability and responsiveness of design for better user experience. Created detailed documentation that included; test cases and reports for all projects to support smooth workflow and effective communication. Created detailed flowcharts to aid in requirements analysis and to streamline the development process. These charts also serve as a means of providing direction for project development to the team as they work on the projects.</p2>
+                        <p>Was responsible for performing complete testing on a website to find defects, limitations in the system, and/or bugs. Documented findings and worked closely with developers to ensure timely resolution of all issues found. Assisted in the improvement of front-end design by reviewing UI elements, usability and responsiveness of design for better user experience. Created detailed documentation that included; test cases and reports for all projects to support smooth workflow and effective communication. Created detailed flowcharts to aid in requirements analysis and to streamline the development process. These charts also serve as a means of providing direction for project development to the team as they work on the projects.</p>
                     </div>
                 </div>
             </div>
         </section>
         <section class="design" id="design">
             <h2 class="heading">De<span>sign</span></h2>
-            <div class="design-container">
-                <div class="design-box">
-                    <div class="design-list">
-                        <span>Coffee Shop</span>
-                        <span>Online Registration Platform</span>
-                        <span>Pet Store</span>
+            
+            <!-- Category Filter Tabs -->
+            <div class="design-tabs" role="tablist">
+                <button class="tab-btn active" data-category="all" role="tab" aria-selected="true">All Projects</button>
+                <button class="tab-btn" data-category="website" role="tab" aria-selected="false">Website Design</button>
+                <button class="tab-btn" data-category="development" role="tab" aria-selected="false">Web Development</button>
+                <button class="tab-btn" data-category="ui" role="tab" aria-selected="false">UI Design</button>
+            </div>
+            
+            <!-- Website Design Projects -->
+            <div class="design-category" id="website-category">
+                <h3 class="category-title"><i class="fa-solid fa-globe"></i> Website Design</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <i class="fa-solid fa-mug-hot"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <a href="#" class="view-btn"><i class="fa-solid fa-eye"></i> View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Coffee Shop Website</h4>
+                            <p>Modern and cozy design for a local coffee shop featuring menu display, reservation system, and online ordering.</p>
+                            <div class="project-tags">
+                                <span>Figma</span>
+                                <span>Responsive</span>
+                                <span>UI/UX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <i class="fa-solid fa-shop"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <a href="#" class="view-btn"><i class="fa-solid fa-eye"></i> View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Pet Store E-commerce</h4>
+                            <p>Playful and vibrant design for an online pet store with pet profiles, product categories, and shopping cart.</p>
+                            <div class="project-tags">
+                                <span>Figma</span>
+                                <span>E-commerce</span>
+                                <span>Mobile-first</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Web Development Projects -->
+            <div class="design-category" id="development-category">
+                <h3 class="category-title"><i class="fa-solid fa-code"></i> Web Development</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-image gallery">
+                            <div class="gallery-slider">
+                                <div class="gallery-slide active">
+                                    <img src="ilaw/maindashboard.jpg" alt="ILAW Registration Platform - Registration Form" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="project-placeholder" style="display: none;">
+                                        <i class="fa-solid fa-clipboard-list"></i>
+                                    </div>
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/loginform.png" alt="ILAW Registration Platform - Login Form" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/maindashboard.jpg" alt="ILAW Registration Platform - Main Dashboard" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/maindashboardmission-vission.jpg" alt="ILAW Registration Platform - Mission Vision" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw.jpg/dashboard-location.jpg" alt="ILAW Registration Platform - Location Dashboard" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/admin-dashboard.png" alt="ILAW Registration Platform - Admin Dashboard" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/admin-memberlist.png" alt="ILAW Registration Platform - Admin Member List" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/admin-officerlist.png" alt="ILAW Registration Platform - Admin Officer List" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/admin-memberrequestacc.png" alt="ILAW Registration Platform - Member Request Account" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/admin-memberstransaction.png" alt="ILAW Registration Platform - Members Transaction" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/admin-documents.png" alt="ILAW Registration Platform - Admin Documents" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/admin-cluster.png" alt="ILAW Registration Platform - Admin Cluster" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/admin-barangaycluster.png" alt="ILAW Registration Platform - Barangay Cluster" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/members-maindashboard.png" alt="ILAW Registration Platform - Members Dashboard" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/members-personalinfo.png" alt="ILAW Registration Platform - Personal Info" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/members-uploadreciept.png" alt="ILAW Registration Platform - Upload Receipt" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/members-officerreview.png" alt="ILAW Registration Platform - Officer Review" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/member-announcement.png" alt="ILAW Registration Platform - Member Announcement" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/announcement.png" alt="ILAW Registration Platform - Announcement" onerror="this.style.display='none';">
+                                </div>
+                                <div class="gallery-slide">
+                                    <img src="ilaw/clients-documents.png" alt="ILAW Registration Platform - Clients Documents" onerror="this.style.display='none';">
+                                </div>
+                            </div>
+                            <div class="gallery-nav">
+                                <button class="gallery-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
+                                <button class="gallery-btn next"><i class="fa-solid fa-chevron-right"></i></button>
+                            </div>
+                            <div class="project-overlay">
+                                <a href="ilaw/maindashboard.jpg" class="view-btn gallery-view" onclick="openGalleryLightbox(event, 'ilaw')"><i class="fa-solid fa-eye"></i> View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Online Registration Platform</h4>
+                            <p>Full-stack web application for ILAW (Ilagan Associated of Women) - member registration, database management, and admin dashboard.</p>
+                            <div class="project-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <a href="#" class="view-btn"><i class="fa-solid fa-eye"></i> View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Portfolio Website</h4>
+                            <p>Personal portfolio showcasing skills, projects, and experience with smooth animations and responsive design.</p>
+                            <div class="project-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- UI Design Projects -->
+            <div class="design-category" id="ui-category">
+                <h3 class="category-title"><i class="fa-solid fa-palette"></i> UI Design</h3>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder ui-design">
+                                <i class="fa-solid fa-mobile-screen"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <a href="#" class="view-btn"><i class="fa-solid fa-eye"></i> View Design</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Mobile App Interface</h4>
+                            <p>Clean and intuitive mobile app interface design with focus on user experience and accessibility.</p>
+                            <div class="project-tags">
+                                <span>Figma</span>
+                                <span>Prototyping</span>
+                                <span>Mobile UI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder ui-design">
+                                <i class="fa-solid fa-dashboard"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <a href="#" class="view-btn"><i class="fa-solid fa-eye"></i> View Design</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Dashboard Design</h4>
+                            <p>Admin dashboard UI with data visualization, analytics widgets, and intuitive navigation system.</p>
+                            <div class="project-tags">
+                                <span>Figma</span>
+                                <span>Dashboard</span>
+                                <span>Data Viz</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <!-- Lightbox Modal for Project Images -->
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <div class="lightbox-content" onclick="event.stopPropagation()">
+                <button class="lightbox-prev" onclick="changeLightboxSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <img id="lightbox-img" src="" alt="Project Image">
+                <button class="lightbox-next" onclick="changeLightboxSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">1</span></div>
+        </div>
+        
         <script src="main.js"></script>
     </body>
 </html>
